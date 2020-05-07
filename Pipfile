@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+django = "*"
+celery = "*"
+pillow = "*"
+rabbitmq = "*"
+braintree = "*"
+weasyprint = "*"
+flower = "*"
+redis = "*"
+django-allauth = "*"
+psycopg2 = "*"
+django-phone-field = "*"
+channels = "*"
+channels-redis = "*"
+
+[requires]
+python_version = "3.6"

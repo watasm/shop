@@ -1,0 +1,69 @@
+
+body {margin:0;height:2000px;}
+
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar a {
+  /*
+
+  padding: 16px;
+
+
+  font-size: 20px; */
+  display: block;
+  text-align: center;
+  transition: all 0.3s ease;
+  padding: 1.5px;
+  color: white;
+    font-size: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 2px 2px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.google {
+  background: #dd4b39;
+  color: white;
+}
+
+.linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.reddit {
+  background: #ff3300;
+  color: white;
+}
+
+.email {
+  background: #267CB5;
+  olor: white;
+}
+
+.content {
+  margin-left: 75px;
+  font-size: 40px;
+}

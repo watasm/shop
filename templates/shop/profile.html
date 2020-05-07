@@ -1,0 +1,63 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %} My profile {% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 img">
+        {% if user.profiles.image %}
+        <img src="{{user.profiles.image.url}}" alt="" class="avatar secondary-content" style="width: 250px;height: 250px;margin-top: -100px;margin-left: -200px; position: absolute; top: 50%;left: 50%;" usemap="#workmap">
+        {% else %}
+        <img src='https://svgshare.com/i/65U.svg' coords="100,0,82,126" alt="" class="avatar secondary-content" style="width: 250px;height: 250px;margin-top: -120px;margin-left: -200px; position: absolute; top: 50%;left: 50%;"/>
+      </div>
+      {% endif %}
+      <div class="col-md-6 details">
+        <p>
+  	    <blockquote>{{user.first_name}}  {{user.last_name}}</blockquote>
+          Username: {{user.username}} <br>
+          Email: {{user.email}} <br>
+          {% if is_seller %}
+          Phone: {{user.seller.phone}}<br>
+          Web Address: <a href="{{user.seller.web_address}}">{{user.seller.web_address}}</a><br>
+          Company Name: {{user.seller.name}}<br>
+          Country : {{user.seller.country}}, Province: {{user.seller.province}}, City: {{user.seller.city}}, Address: {{user.seller.address}}<br>
+          {% endif %}
+          Date joined: {{user.date_joined}}<br>
+          {% if request.user == user %}
+            <p><a class="btn btn-warning" href="{% url 'useredit'%}">Edit</a></p>
+          {% endif %}
+      </div>
+    </div>
+    <h3 style='color:#5993bb'>Your Coupons</h3>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th class="text-center">Coupon</th>
+            <th class="text-center">Discount</th>
+            <th class="text-center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for coupon in user.coupons.all %}
+            <tr class="num">
+              <td class="text-center">"{{ coupon.code }}"</td>
+              <td class = "text-center">{{ coupon.discount }}% off for products {{coupon.seller}}</td>
+              {% if coupon.active %}
+                {% if coupon.cart %}
+                  <td class="text-warning text-center">In the cart</td>
+                {% else %}
+                  <td class="text-success text-center">Available</td>
+                {% endif %}
+              {% else %}
+                <td class="text-danger text-center">Used</td>
+              {% endif %}
+            </tr>
+          {% empty %}
+            <p>No coupons</p>
+          {% endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock%}

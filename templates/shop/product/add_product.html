@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+ Add product
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ product_form.as_p }}
+    <input type="submit" name="add_product" value="Add product">
+  </form>
+
+  </div>
+{% endblock %}
